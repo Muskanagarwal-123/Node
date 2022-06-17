@@ -49,7 +49,6 @@ app.get("/data", async (req, res) => {
 app.delete("/data/:id", async (req, res) => {
   let id = req.params.id;
   await SomeModel.deleteOne({ id });
-  //SomeModel.updateOne({id},{data:req.body.data,})
   res.send("hogya delete");
 });
 
