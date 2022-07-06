@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 var SomeModelSchema = new mongoose.Schema({
   data: String,
@@ -6,4 +6,4 @@ var SomeModelSchema = new mongoose.Schema({
 });
 
 // Compile model from schema
-module.exports = mongoose.model('SomeModel', SomeModelSchema );
+module.exports = mongoose.model("SomeModel", SomeModelSchema);
