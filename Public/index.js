@@ -5,9 +5,10 @@ const collegeDb = require("../Database/CollegeDb");
 const stu = require("../Routes/Student");
 const tea = require("../Routes/Teacher");
 
+router.use(express.json());
 router.use('/student',stu)
 router.use('/teacher',tea)
-router.use(express.json());
+
 collegeDb();
 
 router.listen(port, () => {

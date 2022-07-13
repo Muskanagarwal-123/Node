@@ -1,18 +1,34 @@
 const express = require("express");
+const studentRouter = express.Router();
 const StudentModel = require("../Models/Student");
-const router = express.Router();
 
-router.get("/info", async (req, res) => {
+studentRouter.get("/info", async (req, res) => {
   const info = await StudentModel.find();
   res.send(info);
 });
 
-router.post("/info", async (req, res) => {
+studentRouter.post("/info", async (req, res) => {
   const info = new StudentModel({
     ...req.body,
   });
   await info.save();
-  res.json(info);
+  res.send(info);
 });
 
-module.exports = router;
+studentRouter.delete('/info/:id', async (req, res) => {
+  let id = req.params.id;
+  const query={_id:id};
+  const data=await StudentModel.deleteOne(query);
+  res.send(data);
+});
+
+studentRouter.put("/info/:id",async(req,res)=> {
+  let id=req.params.id;
+  const query = {_id:id};
+  await StudentModel.updateOne(
+    (query),
+    {StudentName: req.body.StudentName, Class:req.body.Class});
+  res.send("Record updated successfully");
+});
+
+module.exports = studentRouter;
